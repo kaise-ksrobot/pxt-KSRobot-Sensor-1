@@ -1,7 +1,8 @@
 {
 	"KSRobot_Sensor|block": "KSRobot感測器",
-	"KSRobot_Sensor.dht11|block": "DHT11 腳位 %dht11pin|取得 %dht11type",
-    "KSRobot_Sensor.DHT11_State.Celsius|block": "攝氏溫度",
+	"KSRobot_Sensor.DHT11_State.Celsius|block": "攝氏溫度",
     "KSRobot_Sensor.DHT11_State.Fahrenheit|block": "華氏溫度",
-    "KSRobot_Sensor.DHT11_State.Humidity|block": "濕度"
+    "KSRobot_Sensor.DHT11_State.Humidity|block": "濕度",
+	"KSRobot_Sensor.dht11|block": "DHT11 腳位 %dht11pin|取得 %dht11type"
+
 }
