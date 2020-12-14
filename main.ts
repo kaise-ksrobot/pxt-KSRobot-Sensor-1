@@ -13,9 +13,9 @@ namespace KSRobot_Sensor {
     //% blockId="KSRobot_dht11" block="DHT11 set pin %dht11pin|get %dht11type"
     export function dht11(dht11pin: DigitalPin, dht11type: DHT11_State,): number {
 
-        pins.digitalWritePin(dht11pin, 0)
-        basic.pause(18)
-        let i = pins.digitalReadPin(dht11pin)
+        //pins.digitalWritePin(dht11pin, 0)
+        basic.pause(200)
+        //let i = pins.digitalReadPin(dht11pin)
         pins.setPull(dht11pin, PinPullMode.PullUp);
         switch (dht11type) {
             case DHT11_State.DHT11_C:
