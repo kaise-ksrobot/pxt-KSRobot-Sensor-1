@@ -1,16 +1,16 @@
 {
-    "name": "pxt-ksrobot-sensor",
-    "version": "0.0.0",
-    "description": "",
+    "name": "KSRobot-Sensor",
+    "version": "0.0.1",
+    "description": "Extension for KAISE KSRobot Sensor module",
+    "license": "MIT", 
     "dependencies": {
         "core": "*",
-        "radio": "*",
-        "microphone": "*"
     },
     "files": [
+        "main.ts",
         "README.md",
-        "main.blocks",
-        "main.ts"
+        "_locales/zh/KSRobot_Sensor-strings.json" 
+
     ],
     "testFiles": [
         "test.ts"
