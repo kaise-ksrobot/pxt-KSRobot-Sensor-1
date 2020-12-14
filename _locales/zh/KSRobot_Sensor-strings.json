@@ -4,5 +4,4 @@
     "KSRobot_Sensor.DHT11_State.Celsius|block": "攝氏溫度",
     "KSRobot_Sensor.DHT11_State.Fahrenheit|block": "華氏溫度",
     "KSRobot_Sensor.DHT11_State.Humidity|block": "濕度"
-		
 }
