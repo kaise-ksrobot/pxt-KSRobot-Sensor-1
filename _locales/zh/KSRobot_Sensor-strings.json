@@ -1,6 +1,8 @@
 {
-	"KSRobot_IR|block": "KSRobot遙控器",
-	"KSRobot_IR.onPressEvent|block": "按下 %btn 鍵",
-	"KSRobot_IR.init|block": "設定紅外遙控腳位在 %pin"
+	"KSRobot_Sensor|block": "KSRobot感測器",
+	"KSRobot_Sensor.dht11|block": "DHT11 腳位 %dht11pin|取得 %dht11type",
+    "KSRobot_Sensor.DHT11_State.Celsius|block": "攝氏溫度",
+    "KSRobot_Sensor.DHT11_State.Fahrenheit|block": "華氏溫度",
+    "KSRobot_Sensor.DHT11_State.Humidity|block": "濕度"
 		
 }
