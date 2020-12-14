@@ -4,7 +4,7 @@
     "description": "Extension for KAISE KSRobot Sensor module",
     "license": "MIT", 
     "dependencies": {
-        "core": "*",
+        "core": "*"
     },
     "files": [
         "main.ts",
