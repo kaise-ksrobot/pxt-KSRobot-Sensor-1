@@ -1,11 +1,11 @@
 //% color=#ff4b4b icon="\uf0ee" block="KSRobot_Sensor"
 namespace KSRobot_Sensor {
     export enum DHT11_State {
-        //% block="Celsius"
+        //% blockId="Celsius" block="Celsius"
         DHT11_C,
-        //% block="Fahrenheit"
+        //% blockId="Fahrenheit" block="Fahrenheit"
         DHT11_F,
-        //% block="Humidity"
+        //% blockId="Humidity" block="Humidity"
         DHT11_H,
     }
 
