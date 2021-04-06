@@ -23,7 +23,7 @@ namespace KSRobot_Sensor {
 
 
     //% blockId="KSRobot_dht11" block="DHT set %dht_type pin %dataPin|get %dhttype"
-    export function dht_readdata(dht_type: DHTtype, dataPin: DigitalPin, dhttype: DHT_State): number {
+    export function dht_readdata(dht_type: DHT_type, dataPin: DigitalPin, dht_state: DHT_State): number {
         let dataArray: boolean[] = []
         let resultArray: number[] = []
         let checksum: number = 0
@@ -83,7 +83,7 @@ namespace KSRobot_Sensor {
         }
 
 
-        switch (dhttype) {
+        switch (dht_state) {
             case DHT_State.Celsius:
 
                 return _temperature;
