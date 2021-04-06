@@ -40,51 +40,52 @@ namespace KSRobot_Sensor {
         pins.setPull(dataPin, PinPullMode.PullUp);
         pins.digitalReadPin(dataPin)
         control.waitMicros(40)
-
-        while (pins.digitalReadPin(dataPin) == 1);
-        while (pins.digitalReadPin(dataPin) == 0);
-        while (pins.digitalReadPin(dataPin) == 1);
-        //read data (5 bytes)
-        for (let index = 0; index < 40; index++) {
+        if (pins.digitalReadPin(dataPin) != 1) {
             while (pins.digitalReadPin(dataPin) == 1);
             while (pins.digitalReadPin(dataPin) == 0);
-            control.waitMicros(28)
-            //if sensor still pull up data pin after 28 us it means 1, otherwise 0
-            if (pins.digitalReadPin(dataPin) == 1) dataArray[index] = true
-        }
-
-
-
-        //convert byte number array to integer
-        for (let index = 0; index < 5; index++)
-            for (let index2 = 0; index2 < 8; index2++)
-                if (dataArray[8 * index + index2]) resultArray[index] += 2 ** (7 - index2)
-
-        //verify checksum
-        checksumTmp = resultArray[0] + resultArray[1] + resultArray[2] + resultArray[3]
-        checksum = resultArray[4]
-        if (checksumTmp >= 512) checksumTmp -= 512
-        if (checksumTmp >= 256) checksumTmp -= 256
-        if (checksum == checksumTmp) _readSuccessful = true
-
-        //read data if checksum ok
-        if (_readSuccessful) {
-            if (dht_type == DHT_type.DHT11) {
-                //DHT11
-                _humidity = resultArray[0] + resultArray[1] / 100
-                _temperature = resultArray[2] + resultArray[3] / 100
-            } else {
-                //DHT22
-                let temp_sign: number = 1
-                if (resultArray[2] >= 128) {
-                    resultArray[2] -= 128
-                    temp_sign = -1
-                }
-                _humidity = (resultArray[0] * 256 + resultArray[1]) / 10
-                _temperature = (resultArray[2] * 256 + resultArray[3]) / 10 * temp_sign
+            while (pins.digitalReadPin(dataPin) == 1);
+            //read data (5 bytes)
+            for (let index = 0; index < 40; index++) {
+                while (pins.digitalReadPin(dataPin) == 1);
+                while (pins.digitalReadPin(dataPin) == 0);
+                control.waitMicros(28)
+                //if sensor still pull up data pin after 28 us it means 1, otherwise 0
+                if (pins.digitalReadPin(dataPin) == 1) dataArray[index] = true
             }
 
 
+
+            //convert byte number array to integer
+            for (let index = 0; index < 5; index++)
+                for (let index2 = 0; index2 < 8; index2++)
+                    if (dataArray[8 * index + index2]) resultArray[index] += 2 ** (7 - index2)
+
+            //verify checksum
+            checksumTmp = resultArray[0] + resultArray[1] + resultArray[2] + resultArray[3]
+            checksum = resultArray[4]
+            if (checksumTmp >= 512) checksumTmp -= 512
+            if (checksumTmp >= 256) checksumTmp -= 256
+            if (checksum == checksumTmp) _readSuccessful = true
+
+            //read data if checksum ok
+            if (_readSuccessful) {
+                if (dht_type == DHT_type.DHT11) {
+                    //DHT11
+                    _humidity = resultArray[0] + resultArray[1] / 100
+                    _temperature = resultArray[2] + resultArray[3] / 100
+                } else {
+                    //DHT22
+                    let temp_sign: number = 1
+                    if (resultArray[2] >= 128) {
+                        resultArray[2] -= 128
+                        temp_sign = -1
+                    }
+                    _humidity = (resultArray[0] * 256 + resultArray[1]) / 10
+                    _temperature = (resultArray[2] * 256 + resultArray[3]) / 10 * temp_sign
+                }
+
+
+            }
         }
 
 
