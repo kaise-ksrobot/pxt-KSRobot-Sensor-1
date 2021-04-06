@@ -1,9 +1,6 @@
 //% color=#ff4b4b icon="\uf0ee" block="KSRobot_Sensor"
 namespace KSRobot_Sensor {
 
-    let _temperature: number = -999.0
-    let _humidity: number = -999.0
-    let _readSuccessful: boolean = false
 
     export enum DHT_type {
         //% blockId="DHT11" block="DHT11"
@@ -28,8 +25,16 @@ namespace KSRobot_Sensor {
         let resultArray: number[] = []
         let checksum: number = 0
         let checksumTmp: number = 0
+        let _temperature: number = -999.0
+        let _humidity: number = -999.0
+        let _readSuccessful: boolean = false
 
-        basic.pause(500)
+
+        for (let index = 0; index < 40; index++) dataArray.push(false)
+        for (let index = 0; index < 5; index++) resultArray.push(0)
+
+
+
         pins.digitalWritePin(dataPin, 0)
         basic.pause(18)
         pins.setPull(dataPin, PinPullMode.PullUp);
@@ -78,8 +83,8 @@ namespace KSRobot_Sensor {
                 _humidity = (resultArray[0] * 256 + resultArray[1]) / 10
                 _temperature = (resultArray[2] * 256 + resultArray[3]) / 10 * temp_sign
             }
-           
-                
+
+
         }
 
 
