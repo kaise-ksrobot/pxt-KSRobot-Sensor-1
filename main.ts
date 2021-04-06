@@ -37,6 +37,7 @@ namespace KSRobot_Sensor {
                         }
                     }
                 }
+                
                 return ((dhtvalue1 & 0x0000ff00) >> 8);
                 break;
             case DHT11_State.DHT11_F:
