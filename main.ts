@@ -30,9 +30,6 @@ namespace KSRobot_Sensor {
         let _readSuccessful: boolean = false
 
 
-        for (let index = 0; index < 40; index++) dataArray.push(false)
-        for (let index = 0; index < 5; index++) resultArray.push(0)
-
 
 
         pins.digitalWritePin(dataPin, 0)
