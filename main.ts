@@ -86,28 +86,29 @@ namespace KSRobot_Sensor {
 
 
             }
+            switch (dht_state) {
+                case DHT_State.Celsius:
+
+                    return _temperature;
+                    break;
+
+                case DHT_State.Fahrenheit:
+
+                    return _temperature = _temperature * 9 / 5 + 32;
+                    break;
+
+                case DHT_State.Humidity:
+
+                    return _humidity;
+                    break;
+
+                default:
+                    return 0;
+            }
         }
 
 
-        switch (dht_state) {
-            case DHT_State.Celsius:
 
-                return _temperature;
-                break;
-
-            case DHT_State.Fahrenheit:
-
-                return _temperature = _temperature * 9 / 5 + 32;
-                break;
-
-            case DHT_State.Humidity:
-
-                return _humidity;
-                break;
-
-            default:
-                return 0;
-        }
 
     }
 
