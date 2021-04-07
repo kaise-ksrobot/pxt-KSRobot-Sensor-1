@@ -3,6 +3,7 @@
 	"KSRobot_Sensor.DHT_State.Celsius|block": "攝氏溫度",
     "KSRobot_Sensor.DHT_State.Fahrenheit|block": "華氏溫度",
     "KSRobot_Sensor.DHT_State.Humidity|block": "濕度",
-	"KSRobot_Sensor.dht_readdata|block": "型號 %dht_type |腳位 %dhtpin |取得 %dhttype"
+	"KSRobot_Sensor.dht_readdata|block": "型號 %dht_type |腳位 %dhtpin |取得 %dhttype",
+	"KSRobot_Sensor.temt6000|block": "TEMT6000 腳位 %dhtpin"
 	
 }
