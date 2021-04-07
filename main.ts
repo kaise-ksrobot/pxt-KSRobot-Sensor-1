@@ -118,6 +118,12 @@ namespace KSRobot_Sensor {
         return (Math.round(temp * 4 / 1024 / 10000 * 1000000 * 4))
     }
 
+    //% blockId="KSRobot_wind_sensor1" block="Wind Sensor(m/s) set pin %dataPin"
+    export function wind_sensor1(dataPin: AnalogPin): number {
+        let temp = pins.analogReadPin(dataPin)
+        return (Math.round(temp * 4 / 1024 / 10000 * 1000000 * 4))
+    }
+
 
 
 }
