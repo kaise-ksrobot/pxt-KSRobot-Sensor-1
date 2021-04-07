@@ -112,7 +112,7 @@ namespace KSRobot_Sensor {
 
     }
 
-    //% blockId="KSRobot_temt6000" block="TEMT6000 set pin %dataPin"
+    //% blockId="KSRobot_temt6000" block="TEMT6000(Lux) set pin %dataPin"
     export function temt6000(dataPin: AnalogPin): number {
         let temp = pins.analogReadPin(dataPin)
         return (Math.round(temp * 4 / 1024 / 10000 * 1000000 * 4))
