@@ -161,12 +161,12 @@ namespace KSRobot_Sensor {
                 _temperature = resultArray[2] + resultArray[3] / 100
 
                 switch (soil_state) {
-                    case DHT_State.Celsius:
+                    case SOIL_State.Celsius:
 
                         return _temperature;
                         break;
 
-                    case DHT_State.Humidity:
+                    case SOIL_State.Humidity:
 
                         return _humidity;
                         break;
