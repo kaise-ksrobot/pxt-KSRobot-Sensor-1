@@ -1,4 +1,4 @@
-//% color=#ff4b4b icon="\uf0ee" block="KSRobot_Sensor"
+//% color=#ff4b4b icon="\uf2db" block="KSRobot_Sensor"
 namespace KSRobot_Sensor {
 
 
