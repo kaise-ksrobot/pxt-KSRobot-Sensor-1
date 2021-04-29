@@ -42,8 +42,10 @@ namespace KSRobot_Sensor {
         pins.digitalWritePin(dataPin, 0)
         basic.pause(18)
         pins.setPull(dataPin, PinPullMode.PullUp);
-        pins.digitalReadPin(dataPin)
+        pins.digitalWritePin(dataPin, 1)
         control.waitMicros(40)
+        pins.digitalReadPin(dataPin)
+        
         if (pins.digitalReadPin(dataPin) != 1) {
             while (pins.digitalReadPin(dataPin) == 1);
             while (pins.digitalReadPin(dataPin) == 0);
