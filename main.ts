@@ -294,7 +294,7 @@ namespace KSRobot_Sensor {
 
 
 
-        return Weight
+        return Math.round（Weight）
     }
 
 
