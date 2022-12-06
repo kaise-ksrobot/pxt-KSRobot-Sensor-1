@@ -2,6 +2,7 @@
 namespace KSRobot_Sensor {
 
     let initialized = false;
+    let Weight_Maopi =0;
 
 
 
@@ -266,7 +267,7 @@ namespace KSRobot_Sensor {
 
         let Weight = 0;
         let HX711_Buffer =0;
-        let Weight_Maopi =0;
+        
         
 
         //Get_Maopi()
