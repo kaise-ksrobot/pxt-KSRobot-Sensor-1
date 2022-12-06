@@ -197,5 +197,12 @@ namespace KSRobot_Sensor {
     }
 
 
+    //% blockId="KSRobot_load_cell" block="Load Cell(g) set ClockPin %sck_pin |DataPin %data_pin "
+    export function load_cell(sck_pin: DigitalPin ,data_pin: DigitalPin): number {
+        let temp = pins.analogReadPin(dataPin)
+        return (temp * 4 / 1024 * 26)
+    }
+
+
 
 }
