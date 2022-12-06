@@ -1,6 +1,9 @@
 //% color=#ff4b4b icon="\uf2db" block="KSRobot_Sensor"
 namespace KSRobot_Sensor {
 
+    let initialized = false;
+
+
 
     export enum DHT_type {
         //% blockId="DHT11" block="DHT11"
@@ -45,7 +48,7 @@ namespace KSRobot_Sensor {
         pins.digitalWritePin(dataPin, 1)
         control.waitMicros(40)
         pins.digitalReadPin(dataPin)
-        
+
         if (pins.digitalReadPin(dataPin) != 1) {
             while (pins.digitalReadPin(dataPin) == 1);
             while (pins.digitalReadPin(dataPin) == 0);
@@ -132,7 +135,7 @@ namespace KSRobot_Sensor {
         pins.digitalWritePin(dataPin, 1)
         control.waitMicros(40)
         pins.digitalReadPin(dataPin)
-       
+
         if (pins.digitalReadPin(dataPin) != 1) {
             while (pins.digitalReadPin(dataPin) == 1);
             while (pins.digitalReadPin(dataPin) == 0);
@@ -196,11 +199,101 @@ namespace KSRobot_Sensor {
         return (temp * 4 / 1024 * 26)
     }
 
+    function HX711_Read(sck_pin: DigitalPin, data_pin: DigitalPin): number {
+
+        // gain 128
+
+
+        //digitalWrite(HX711_DT, HIGH);
+        //delayMicroseconds(1);
+        pins.digitalWritePin(data_pin, 1)
+        control.waitMicros(1)
+
+        //digitalWrite(HX711_SCK, LOW);
+        //delayMicroseconds(1);
+        pins.digitalWritePin(sck_pin, 0)
+        control.waitMicros(1)
+
+        //count = 0;
+        let count = 0;
+
+        //while (digitalRead(HX711_DT));
+        while (pins.digitalReadPin(data_pin));
+
+        //for (i = 0; i < 24; i++) {
+        for (let i = 0; i < 24; i++) {
+            //digitalWrite(HX711_SCK, HIGH);
+            //delayMicroseconds(1);
+            pins.digitalWritePin(sck_pin, 1)
+            control.waitMicros(1)
+
+            //count = count << 1;
+            count = count * 2;
+
+            //digitalWrite(HX711_SCK, LOW);
+            //delayMicroseconds(1);
+            pins.digitalWritePin(sck_pin, 0)
+            control.waitMicros(1)
+
+            //if (digitalRead(HX711_DT))
+            //    count++;
+
+            if (pins.digitalReadPin(data_pin))
+                count += 1
+
+        }
+
+
+        //digitalWrite(HX711_SCK, HIGH);
+        //count ^= 0x800000;  
+        //delayMicroseconds(1);
+        pins.digitalWritePin(sck_pin, 1)
+        count = count ^ 0x800000;
+        control.waitMicros(1)
+        //digitalWrite(HX711_SCK, LOW);
+        //delayMicroseconds(1);
+        pins.digitalWritePin(sck_pin, 0)
+        control.waitMicros(1)
+
+
+        return (count);
+    }
+
 
     //% blockId="KSRobot_load_cell" block="Load Cell(g) set ClockPin %sck_pin |DataPin %data_pin "
-    export function load_cell(sck_pin: DigitalPin ,data_pin: DigitalPin): number {
-        let temp = pins.analogReadPin(dataPin)
-        return (temp * 4 / 1024 * 26)
+    export function load_cell(sck_pin: DigitalPin, data_pin: DigitalPin): number {
+
+
+        let Weight = 0;
+        let HX711_Buffer =0;
+        let Weight_Maopi =0;
+        
+
+        //Get_Maopi()
+        if (!initialized) {
+            HX711_Buffer = HX711_Read(sck_pin, data_pin);
+            Weight_Maopi = HX711_Buffer / 100;
+            basic.pause(1000)
+            HX711_Buffer = HX711_Read(sck_pin, data_pin);
+            Weight_Maopi = HX711_Buffer / 100;
+
+            initialized = true;
+
+        }
+
+
+
+        //Get_Weight()
+        HX711_Buffer = HX711_Read(sck_pin, data_pin);
+        HX711_Buffer = HX711_Buffer / 100;
+
+        let Weight_Shiwu = HX711_Buffer;
+        Weight_Shiwu = Weight_Shiwu - Weight_Maopi;
+        Weight = Weight_Shiwu / 2.14;
+
+
+
+        return Weight
     }
 
 

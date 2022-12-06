@@ -9,5 +9,5 @@
 	"KSRobot_Sensor.soil_readdata|block": "土壤感測器 腳位 %dataPin |取得 %soil_state",
 	"KSRobot_Sensor.temt6000|block": "TEMT6000(Lux) 腳位 %dhtpin",
 	"KSRobot_Sensor.wind_sensor1|block": "風速計(m/s) 腳位 %dhtpin",
-	"KSRobot_Sensor.load_cell|block": "重量感測器(g) 腳位 %sck_pin |腳位 %data_pin"
+	"KSRobot_Sensor.load_cell|block": "重量感測器(g) SCK腳位 %sck_pin |DAT腳位 %data_pin"
 }
