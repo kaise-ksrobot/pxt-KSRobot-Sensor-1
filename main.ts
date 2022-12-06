@@ -290,11 +290,12 @@ namespace KSRobot_Sensor {
 
         let Weight_Shiwu = HX711_Buffer;
         Weight_Shiwu = Weight_Shiwu - Weight_Maopi;
-        Weight = Weight_Shiwu / 2.14;
+        Weight = Math.round(Weight_Shiwu / 2.14);
 
 
 
-        return Math.round（Weight）
+        return Weight
+        
     }
 
 
